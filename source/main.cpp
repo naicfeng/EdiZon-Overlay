@@ -128,9 +128,9 @@ public:
 
 
             if (edz::cheat::CheatManager::getProcessID() != 0) {
-                renderer->drawString("程序ID", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("构建ID", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("进程ID", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("程序 ID", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("构建 ID", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("进程 ID", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
                 renderer->drawString(GuiMain::s_runningTitleIDString.c_str(), false, 250 +14, 40 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningBuildIDString.c_str(), false, 250 +14, 60 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningProcessIDString.c_str(), false, 250 +14, 80 -6, 15, (tsl::style::color::ColorHighlight));
@@ -285,7 +285,7 @@ public:
      }
 
     virtual tsl::elm::Element* createUI() override {
-        auto rootFrame = new tsl::elm::OverlayFrame(APP_TITLE, "System Information");
+        auto rootFrame = new tsl::elm::OverlayFrame(APP_TITLE, "系统信息");
 
         auto infos = new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h){
 
@@ -333,7 +333,7 @@ public:
             renderer->drawString(formatString("%.01f MHz", gpuClock / 1'000'000.0F).c_str(), false, 258, 300, 18, (tsl::style::color::ColorHighlight));
             renderer->drawString(formatString("%.01f MHz", memClock / 1'000'000.0F).c_str(), false, 258, 330, 18, (tsl::style::color::ColorHighlight));
 
-            if (this->m_ipAddressString ==  "0.0.0.0")
+            if (this->m_ipAddressString == "0.0.0.0" || this->m_ipAddressString.find(".0.0.0") != std::string::npos)
                 renderer->drawString("离线", false, 258, 370, 18, (tsl::style::color::ColorHighlight));
             else
                 renderer->drawString(this->m_ipAddressString.c_str(), false, 258, 370, 18, (tsl::style::color::ColorHighlight));
